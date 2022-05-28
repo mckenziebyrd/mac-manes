@@ -5,13 +5,13 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.container {
+.request-form-container {
   max-width: 500px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
   border: 1px solid steelblue;
-  padding: 30px;
+  padding: 20px;
   border-radius: 5px;
 }
 .requestForm {
@@ -58,3 +58,20 @@
   height: 20px;
 }
 
+.postedRequests {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  border: 1px solid steelblue;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.posted-requests-container {
+  background-color: rgb(242, 246, 247);
+  margin: 30px auto;
+  overflow: auto;
+  padding: 15px;
+  border-radius: 5px;
+}
