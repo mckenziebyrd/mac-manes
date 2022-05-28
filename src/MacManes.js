@@ -9,7 +9,7 @@ export const MacManes = () => {
   return (
     <div className='macManes'>
       <NavBar />
-      {/* <ApplicationViews /> */}
+      <ApplicationViews />
       <div className='request-form-container'>
       <RequestForm />
       </div>
