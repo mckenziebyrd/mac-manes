@@ -7,7 +7,9 @@ const NavBar = () => {
 
   return (
     <nav className='NavBarItems'>
+        <Link className='nav-home' to="">
         <h1 className='navbar-logo'>Mac Manes</h1>
+        </Link>
         <ul className='nav-menu'>
         <Link className='nav-links' to="/requests">
           <li className='nav-links'>REQUESTS</li>

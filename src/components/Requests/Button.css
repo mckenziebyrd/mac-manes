@@ -19,15 +19,9 @@
     transition: 250ms;
 }
 
-.btn--primary {
-    
-}
 
 .btn:active {
     transform: scale(0.98);
   }
 
-  .btn-block {
-    display: block;
-    width: 100%;
-  }
+  

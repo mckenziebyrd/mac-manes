@@ -5,28 +5,38 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
+import Button from './RequestFormButton';
+import "./Button.css"
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const RequestForm = () => {
     const [requests, change] = useState({
         name: "",
         currentClient: false,
+        appointmentType: "",
         description: "",
         hairHistory: "",
         appointmentDateTime: "",
     })
 
-    
+    const history = useHistory()
 
     const submitRequest = (evt) => {
         const newRequest = {
             name: requests.name,
             currentClient: requests.currentClient,
+            appointmentType: requests.appointmentType,
             description: requests.description,
             hairHistory: requests.hairHistory,
            appointmentDateTime: requests.appointmentDateTime
         }
         
         evt.preventDefault()
+
+        // if (!input) {
+        //     alert('Please add a task')
+        //     return
+        //   }
 
         const fetchOption = {
             method: "POST",
@@ -47,18 +57,19 @@ const RequestForm = () => {
         copy.appointmentDateTime = appointmentDateTime
         change(copy)
     }
-    const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [value, setValue] = React.useState(new Date('2014-09-18T21:11:54'));
  
-    const handleChange = (newValue) => {
-      this.setValue(newValue); 
-    };
+  const handleChange = (newValue) => {
+    this.setValue(newValue);
+  };
       
     
     return (
         < div className='request-form-container'>
     <form className='requestForm'>
-       
+    <button className='btn' onClick={() => history.push("/requests")}>X</button>
          <h2>Appointment Request Form</h2>
+         
         <fieldset>
             <div className='form-group'>
                 <label htmlFor='name'>Name: </label>
@@ -91,6 +102,34 @@ const RequestForm = () => {
                         }
                     }
                 />
+
+            </div>
+        </fieldset>
+        <fieldset>
+            <div className='form-group'>
+                <label htmlFor='appointment-type'>Appointment: </label>
+                <select 
+                    type="text"
+                    className='form-control'
+                    placeholder='Appointment Type'
+                    onChange={
+                        (evt) => {
+                            const copy = {...requests}
+                            copy.appointmentType = evt.target.value
+                            change(copy)
+                        }
+                    }
+                >
+                    <option>Choose Appointment Type</option>
+                    <option>Full Highlight</option>
+                    <option>Base Color</option>
+                    <option>Bleach and Tone</option>
+                    <option>Balayage</option>
+                    <option>Transformation Color</option>
+                    <option>Haircut</option>
+                </select>
+            
+               
 
             </div>
         </fieldset>
@@ -151,12 +190,13 @@ const RequestForm = () => {
             className='form-control'
             label="Date&Time picker"
             value={value}
-            onChange={handleChange}
+            onChange={setDateTime}
             renderInput={(params) => <TextField {...params} />}
           />
         </Stack>
       </LocalizationProvider>
     </div>
+    
         </fieldset>
         <button   
             onClick={submitRequest}
