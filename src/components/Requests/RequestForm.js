@@ -1,6 +1,10 @@
+import { calculateNewValue } from '@testing-library/user-event/dist/utils'
 import React, { useEffect, useState } from 'react'
-import DateTimePicker from './DateTimePicker'
-
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DateTimePicker from '@mui/lab/DateTimePicker';
 
 const RequestForm = () => {
     const [requests, change] = useState({
@@ -8,6 +12,7 @@ const RequestForm = () => {
         currentClient: false,
         description: "",
         hairHistory: "",
+        appointmentDateTime: "",
     })
 
     
@@ -18,7 +23,7 @@ const RequestForm = () => {
             currentClient: requests.currentClient,
             description: requests.description,
             hairHistory: requests.hairHistory,
-           
+           appointmentDateTime: requests.appointmentDateTime
         }
         
         evt.preventDefault()
@@ -37,11 +42,23 @@ const RequestForm = () => {
             })
     }
 
-
-
+    const setDateTime = (appointmentDateTime) => {
+        const copy = {...requests}
+        copy.appointmentDateTime = appointmentDateTime
+        change(copy)
+    }
+    const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
+ 
+    const handleChange = (newValue) => {
+      this.setValue(newValue); 
+    };
+      
+    
     return (
+        < div className='request-form-container'>
     <form className='requestForm'>
-        <h2>Appointment Request Form</h2>
+       
+         <h2>Appointment Request Form</h2>
         <fieldset>
             <div className='form-group'>
                 <label htmlFor='name'>Name: </label>
@@ -113,22 +130,33 @@ const RequestForm = () => {
                 
             </div>
         </fieldset>
-        <fieldset>
+        {/* <fieldset>
             <div className='form-group'>
                 <label htmlFor='photo'>Upload photo here: </label>
                 <input 
                     type="file"
                     className='form-control'
                     placeholder='Upload Photo Here'
+                    
                 />
                 
             </div>
-        </fieldset>
+        </fieldset> */}
         <fieldset>
-        <div className='form-group'>
-        
-        <DateTimePicker />
-        </div>
+        <div style={{margin: "3% 5%"}}>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <Stack spacing={3}>
+          
+          <DateTimePicker
+            className='form-control'
+            label="Date&Time picker"
+            value={value}
+            onChange={handleChange}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </Stack>
+      </LocalizationProvider>
+    </div>
         </fieldset>
         <button   
             onClick={submitRequest}
@@ -137,6 +165,7 @@ const RequestForm = () => {
             </button>
             
     </form>
+    </div>
   )
 }
 

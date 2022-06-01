@@ -16,8 +16,7 @@ const RequestsList = () => {
 
   
   return (
-    <div>
-      <h2>Submitted Requests</h2>
+<div className='posted-requests-container'>      <h2>Submitted Requests</h2>
       {
             requests.map(
                 (requestsObject) => {
@@ -25,6 +24,7 @@ const RequestsList = () => {
                      <h3>Appointment Request from : {requestsObject.name}</h3> 
                       <p>Descrition: {requestsObject.description}</p>
                       <p>Hair History: {requestsObject.hairHistory}</p>
+                      <p>Appointment Time: {requestsObject.appointmentDateTime}</p>
                       </div>
                  }
             )
