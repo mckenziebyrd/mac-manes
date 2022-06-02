@@ -6,12 +6,14 @@ import RequestsList from './components/Requests/RequestsList.js'
 import Messages from './components/Messages/Messages.js'
 import RequestFormButton from './components/Requests/RequestFormButton.js'
 import HomePage from './components/HomePage.js'
+import MessageForm from './components/Messages/MessageForm.js'
 
 export const MacManes = () => {
   return (
     <div className='macManes'>
       <NavBar />
       <HomePage />
+      <MessageForm />
       <ApplicationViews />
       </div>
   )

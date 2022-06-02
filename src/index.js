@@ -6,6 +6,8 @@ import NavBar from './components/NavBar/NavBar';
 import './index.css';
 import { MacManes } from "./MacManes";
 import reportWebVitals from './reportWebVitals';
+import './components/Requests/Requests.css'
+import './components/Messages/Messages.css'
 
 
 
@@ -14,8 +16,6 @@ ReactDOM.render(
     <BrowserRouter>
        <MacManes />
     </BrowserRouter>
- 
-    
   </React.StrictMode>,
   document.getElementById('root')
 );
