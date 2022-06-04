@@ -16,8 +16,14 @@ const RequestForm = () => {
         appointmentType: "",
         description: "",
         hairHistory: "",
-        appointmentDateTime: "",
+        appointmentDateTime: new Date('2014-09-18T21:11:54'),
     })
+
+    const [value, setValue] = React.useState(new Date('2014-09-18T21:11:54'));
+ 
+  const handleChange = (newValue) => {
+    this.setValue(newValue);
+  };
 
     const history = useHistory()
 
@@ -28,7 +34,7 @@ const RequestForm = () => {
             appointmentType: requests.appointmentType,
             description: requests.description,
             hairHistory: requests.hairHistory,
-           appointmentDateTime: requests.appointmentDateTime
+           appointmentDateTime: requests.appointmentDateTime.toString()
         }
         
         evt.preventDefault()
@@ -57,11 +63,7 @@ const RequestForm = () => {
         copy.appointmentDateTime = appointmentDateTime
         change(copy)
     }
-    const [value, setValue] = React.useState(new Date('2014-09-18T21:11:54'));
- 
-  const handleChange = (newValue) => {
-    this.setValue(newValue);
-  };
+
       
     
     return (
@@ -189,7 +191,7 @@ const RequestForm = () => {
           <DateTimePicker
             className='form-control'
             label="Date&Time picker"
-            value={value}
+            value={requests.appointmentDateTime}
             onChange={setDateTime}
             renderInput={(params) => <TextField {...params} />}
           />

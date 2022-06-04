@@ -9,7 +9,7 @@ export const Login = () => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email}`)
+        return fetch(`http://localhost:8088/users?email=${email}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
@@ -19,7 +19,7 @@ export const Login = () => {
         existingUserCheck()
             .then(exists => {
                 if (exists) {
-                    localStorage.setItem("honey_customer", exists.id)
+                    localStorage.setItem("manes_user", exists.id)
                     history.push("/")
                 } else {
                     existDialog.current.showModal()
@@ -33,10 +33,9 @@ export const Login = () => {
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
-
+<h1>Mac Manes</h1>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Honey Rae Repairs</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
@@ -54,7 +53,7 @@ export const Login = () => {
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/register">Not a member yet?</Link>
+                <Link to="/register">Not a client yet?</Link>
             </section>
         </main>
     )

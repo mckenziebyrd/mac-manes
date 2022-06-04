@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-// const loggedInUser = parseInt(localStorage.getItem("gg_user")) 
+const loggedInUser = parseInt(localStorage.getItem("manes_user")) 
 
 const MessageForm = () => {
   const [message, change] = useState({
-      senderId: "loggedinUser",
+      senderId: loggedInUser,
       reciepentId: 1,
       message: "",
       timestamp: Date.now().toString() 
@@ -16,6 +16,19 @@ const MessageForm = () => {
           message: message.message,
           timestamp: message.timestamp
       }
+
+      const fetchOption = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newMessage)
+    }
+
+    return fetch("http://localhost:8088/messages", fetchOption)
+        .then(() => {
+            console.log(newMessage)
+        })
   }
   
     return (
@@ -41,7 +54,13 @@ const MessageForm = () => {
                     type="text"
                     className='form-message'
                     placeholder='Message to Stylist'
-    
+                    onChange={
+                        (evt) => {
+                            const copy = {...message}
+                            copy.message = evt.target.value
+                            change(copy)
+                        }
+                    }
                 />
                 
             </div>

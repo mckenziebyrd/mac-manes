@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import RequestForm from './RequestForm'
+import RequestFormButton from './RequestFormButton'
 
 const RequestsList = () => {
   const [requests, updateRequest] = useState([])
@@ -16,7 +18,10 @@ const RequestsList = () => {
 
   
   return (
-<div className='posted-requests-container'>      <h2>Submitted Requests</h2>
+    
+<div className='posted-requests-container'>
+<RequestFormButton />  
+        <h2>Submitted Requests</h2>
       {
             requests.map(
                 (requestsObject) => {

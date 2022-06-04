@@ -1,5 +1,5 @@
 .NavBarItems {
-    background: linear-gradient(90deg, rgb(235, 164, 238) 0%, rgb(167, 61, 130) 100%);
+    background: linear-gradient(90deg, rgb(231, 182, 182) 0%, rgb(230, 201, 201) 100%);
     height: 80px;
     display: flex;
     justify-content: center;
@@ -48,3 +48,4 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
+

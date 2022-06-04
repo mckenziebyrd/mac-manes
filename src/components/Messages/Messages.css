@@ -21,8 +21,25 @@
     margin: 5px;
     padding: 3px 7px;
     font-size: 17px;
-}
+} */
 
 .form-group {
     margin: 10px;
+}
+
+.message-inbox {
+    border: 2px solid rgb(247, 205, 186);
+    padding: 25px;
+    border-radius: 0.5rem;
+    margin: 0 25%;
+    flex-basis: 50%;
+}
+
+.inbox-message {
+    padding: 5px;
+    margin: 5px;
+    margin-left: 20px;
+    min-height: 70px;
+    border-radius: 0.2rem;
+    background-color: rgb(249, 234, 227);
 }

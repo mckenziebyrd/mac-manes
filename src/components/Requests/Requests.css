@@ -2,7 +2,7 @@
     max-width: 900px;
     margin: 30px auto;
     overflow: auto;
-    min-height: 300px;
+    min-height: 20px;
     border: 1px solid steelblue;
     padding: 20px;
     border-radius: 5px;
@@ -16,7 +16,7 @@
   
   .form-control {
     margin: 10px 0;
-    
+    color: black;
   }
   
   .form-control label {
