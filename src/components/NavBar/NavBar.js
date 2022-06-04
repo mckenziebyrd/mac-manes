@@ -11,11 +11,12 @@ const NavBar = () => {
         <h1 className='navbar-logo'>Mac Manes</h1>
         </Link>
         <ul className='nav-menu'>
+          <a className="nav-links" target="_blank" href="https://www.instagram.com/mac.manes/?hl=en">INSTAGRAM</a>
         <Link className='nav-links' to="/requests">
-          <li className='nav-links'>REQUESTS</li>
+          <li>REQUESTS</li>
           </Link>
         <Link className='nav-links' to="/messages">
-          <li className='nav-links'>MESSAGES</li>
+          <li>MESSAGES</li>
           </Link>
          <Link className="nav-links" to="#"
                 onClick={
@@ -23,7 +24,8 @@ const NavBar = () => {
                         localStorage.removeItem("manes_user")
                     }
                 }
-                >LOG OUT</Link>
+                >
+                  <li>LOG OUT</li></Link>
             
             </ul>
     </nav>

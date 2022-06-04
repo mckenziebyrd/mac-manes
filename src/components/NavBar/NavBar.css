@@ -5,6 +5,8 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .navbar-logo {
@@ -12,6 +14,7 @@
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
+    font-size: 30px;
 }
 
 .fa-react {
@@ -38,7 +41,7 @@
 }
 
 .nav-links:hover {
-    background-color: rgb(242, 84, 84);
+    background-color: rgb(231, 182, 182);
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }

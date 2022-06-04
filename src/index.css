@@ -6,6 +6,9 @@
 }
 
 .home-container {
+  display: flex;
+    align-items: center;
+    align-content: center;
     max-width: 900px;
     margin: 30px auto;
     overflow: auto;
