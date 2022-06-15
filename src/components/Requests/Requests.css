@@ -1,10 +1,10 @@
 .request-form-container {
-    max-width: 900px;
+    max-width: 600px;
     margin: 30px auto;
     overflow: auto;
-    min-height: 20px;
+    min-height: 10px;
     border: 1px solid steelblue;
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
   }
   .requestForm {
@@ -17,6 +17,7 @@
   .form-control {
     margin: 10px 0;
     color: black;
+    font-size: large;
   }
   
   .form-control label {
@@ -24,14 +25,31 @@
   }
   
   .form-control input {
-    width: 100%;
+    width: 10%;
     height: 40px;
     margin: 5px;
     padding: 3px 7px;
     font-size: 17px;
   }
-  
-  .form-control-check {
+
+  input[type="checkbox" i] {
+    background-color:aqua;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    margin: 3px 3px 3px 4px;
+    padding: 5px;
+    border: initial;
+    opacity: 0.6
+}
+
+input.form-control {
+  color: aquamarine;
+  font-size: large;
+}
+  /* .form-control-check {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -49,7 +67,8 @@
   .form-control-check input {
     flex: 2;
     height: 20px;
-  }
+
+  }  */
   
   .postedRequests {
     max-width: 500px;

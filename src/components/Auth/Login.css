@@ -26,7 +26,7 @@ fieldset {
     display: inline-block;
 }
 
-.form-control {
+.form-control-login {
     display: block;
     width: 94%;
     height: calc(1.5em + .75rem + 2px);

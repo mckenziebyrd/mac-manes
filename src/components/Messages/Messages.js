@@ -4,35 +4,40 @@ import MessageFormButton from './MessageFormButton'
 
 const Messages = () => {
     const [messages, updateMessages] = useState([])
-    const [user, updateUser] = useState([])
-
-    useEffect(
-        () => {
-          fetch("http://localhost:8088/messages")
-              .then(res => res.json())
-              .then((data) => {
-                  updateMessages(data)
-              })
-      },
-      []
-    )
+    const [users, updateUser] = useState([])
     
-    useEffect(
+   const updateData = 
         () => {
           fetch("http://localhost:8088/users")
               .then(res => res.json())
               .then((data) => {
                   updateUser(data)
-                  
+                 fetch("http://localhost:8088/messages")
+              .then(res => res.json())
+              .then((data) => {
+                  updateMessages(data)
+              }) 
               })
-      },
-      []
-    )
+      }
+
+      useEffect(updateData)
+    
+
+    // useEffect(
+    //     () => {
+          
+    //   },
+    //   []
+    // )
+    
+  
     
     const deleteMessage = (id) => {
         fetch(`http://localhost:8088/messages/${id}`, {
-            method: "DELETE"
-        })
+            method: "DELETE" })
+            .then((data) => {
+                updateData()
+            })
     }
 
   return (
@@ -45,16 +50,16 @@ const Messages = () => {
                 
         
         
-        const findMessageSender = user.find(
-        (users) => {
-            return users.name === messageObject.senderId
+        const findMessageSender = users.find(
+        (user) => {
+            return user.id === messageObject.senderId
         }
     )
              return <div className='message-inbox' key={`message--${messageObject.id}`}>
-        <h3>From: {messageObject.senderId}</h3>
+        <h3>From: {findMessageSender.name}</h3>
 
         <button onClick={() => {
-            deleteMessage(messages.id)}}>Delete</button>
+            deleteMessage(messageObject.id)}}>Delete</button>
 
         <p className='inbox-message'>{messageObject.message}</p>
     </div>  
