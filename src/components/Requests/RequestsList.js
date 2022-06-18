@@ -53,6 +53,7 @@ const deleteRequest = (id) => {
                      <h3>Appointment Request from : {requestsObject.name}</h3> 
                       <p>Descrition: {requestsObject.description}</p>
                       <p>Hair History: {requestsObject.hairHistory}</p>
+                      <img src={requestsObject.img}></img>
                       <p>Appointment Time: {requestsObject.appointmentDateTime}</p>
                       </div>
                  }

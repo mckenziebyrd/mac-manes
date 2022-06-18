@@ -17,6 +17,7 @@ const RequestForm = () => {
         appointmentType: "",
         description: "",
         hairHistory: "",
+        img: "",
         appointmentDateTime: new Date('2014-09-18T21:11:54'),
     })
 const [image, setImage] = useState('')
@@ -36,6 +37,7 @@ const [loading, setloading] = useState(false)
             appointmentType: requests.appointmentType,
             description: requests.description,
             hairHistory: requests.hairHistory,
+            img: image,
            appointmentDateTime: requests.appointmentDateTime.toString()
         }
         
