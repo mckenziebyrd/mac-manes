@@ -33,7 +33,6 @@
   }
 
   input[type="checkbox" i] {
-    background-color:aqua;
     cursor: default;
     appearance: auto;
     box-sizing: border-box;
@@ -46,8 +45,8 @@
 }
 
 input.form-control {
-  color: aquamarine;
-  font-size: large;
+ 
+  font-size: medium;
 }
   /* .form-control-check {
     display: flex;
