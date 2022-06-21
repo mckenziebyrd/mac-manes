@@ -53,7 +53,7 @@ fieldset {
 .container--login {
     text-align: center;width: 100%;
     height: 100vh;
-    background: linear-gradient(-45deg, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);;
+    background: linear-gradient(-45deg, #e29fcf 0%, #ae5584 13%, #ec9cd6 25%, #d376c8 38%, #d585d5 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);;
     background-size: 400% 400%;
     position: relative;
     animation: animate 7.5s ease-in-out infinite;
@@ -72,6 +72,28 @@ fieldset {
     background-blend-mode: overlay;
     background-repeat: no-repeat;
 }
+
+.button {
+    display: inline-block;
+   
+    color: rgb(6, 5, 5);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.button:hover {
+        padding: 12px 22px;
+        transition: all 0.3s ease-out;
+        font-size: 16px;
+        color: purple;
+        transition: 250ms;
+    }
+
 
 .button--close {
     position: relative;

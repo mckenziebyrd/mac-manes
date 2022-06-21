@@ -7,11 +7,12 @@ const NavBar = () => {
 
   return (
     <nav className='NavBarItems'>
+ 
         <Link className='nav-home' to="./home">
         <h1 className='navbar-logo'>Mac Manes</h1>
         </Link>
         <ul className='nav-menu'>
-          <a className="nav-links" target="_blank" href="https://www.instagram.com/mac.manes/?hl=en">INSTAGRAM</a>
+          {/* <a className="nav-links" target="_blank" href="https://www.instagram.com/mac.manes/?hl=en">INSTAGRAM</a> */}
         <Link className='nav-links' to="/requests">
           <li>REQUESTS</li>
           </Link>

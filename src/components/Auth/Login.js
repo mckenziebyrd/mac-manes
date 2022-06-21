@@ -29,7 +29,7 @@ export const Login = () => {
 
     return (
         <main className="container--login">
-            <h1>Mac Manes</h1>
+            {/* <h1>Mac Manes</h1> */}
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
@@ -47,14 +47,15 @@ export const Login = () => {
                             required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button className="button" type="submit">
                             Sign in
                         </button>
-                    </fieldset>
+                    </fieldset><
+                    Link to="/register">Not a client yet?</Link>
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/register">Not a client yet?</Link>
+                
             </section>
         </main>
     )
