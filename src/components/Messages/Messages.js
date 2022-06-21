@@ -5,6 +5,8 @@ import MessageFormButton from "./MessageFormButton";
 const Messages = () => {
   const [messages, updateMessages] = useState([]);
   const [users, updateUser] = useState([]);
+  const loggedInUser = parseInt(localStorage.getItem("manes_user")) 
+
 
   const updateData = () => {
     Promise.all([
@@ -16,14 +18,19 @@ const Messages = () => {
       fetch("http://localhost:8088/messages")
         .then((res) => res.json())
         .then((data) => {
-          updateMessages(data);
+          const filterData = data.filter((messages) => {
+              return messages.senderId === loggedInUser || messages.senderId === 1
+             
+          },           
+          )
+          updateMessages(filterData);
         }),
     ]);
   };
 
   useEffect(updateData, []);
 
-  // useEffect(
+  // useEffect( 
   //     () => {
 
   //   },

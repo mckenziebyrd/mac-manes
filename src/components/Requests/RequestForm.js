@@ -11,6 +11,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { appendOwnerState } from '@mui/base';
 
 const RequestForm = () => {
+    const loggedInUser = parseInt(localStorage.getItem("manes_user")) 
     const [requests, change] = useState({
         name: "",
         currentClient: false,
@@ -19,14 +20,20 @@ const RequestForm = () => {
         hairHistory: "",
         img: "",
         appointmentDateTime: new Date('2014-09-18T21:11:54'),
+        senderId: ""
     })
 const [image, setImage] = useState('')
 const [loading, setloading] = useState(false)
-//     const [value, setValue] = React.useState(new Date('2014-09-18T21:11:54'));
- 
-//   const handleChange = (newValue) => {
-//     this.setValue(newValue);
-//   };
+const [users, updateUser] =useState([])
+
+useEffect(
+    () => {
+        fetch("http://localhost:8088/users")
+        .then((res) => res.json())
+        .then((data) => {
+          updateUser(data);
+    }
+)}, [])
 
     const history = useHistory()
 
@@ -38,7 +45,8 @@ const [loading, setloading] = useState(false)
             description: requests.description,
             hairHistory: requests.hairHistory,
             img: image,
-           appointmentDateTime: requests.appointmentDateTime.toString()
+           appointmentDateTime: requests.appointmentDateTime.toString(),
+            senderId: loggedInUser
         }
         
         evt.preventDefault()
@@ -87,22 +95,28 @@ const [loading, setloading] = useState(false)
         setImage(file.secure_url)
         setloading(false)
 
-    console.log(files)
-    }
     
+    }
+
+    const findMessageSender = users.find((user) => {
+        return user.id === loggedInUser;
+      });
+    
+    console.log(findMessageSender)
     return (
         < div className='request-form-container'>
     <form className='requestForm'>
     <button className='btn' onClick={() => history.push("/requests")}>X</button>
          <h2>Appointment Request Form</h2>
-         
+        <h3></h3>
         <fieldset>
             <div className='form-group'>
                 <label htmlFor='name'>Name: </label>
                 <input 
+                    disabled
                     type="text"
                     className='form-control'
-                    placeholder='Name'
+                    placeholder={findMessageSender.name}
                     onChange={
                         (evt) => {
                             const copy = {...requests}

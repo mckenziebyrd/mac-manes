@@ -4,13 +4,20 @@ import RequestFormButton from './RequestFormButton'
 
 const RequestsList = () => {
   const [requests, updateRequest] = useState([])
+    const loggedInUser = parseInt(localStorage.getItem("manes_user")) 
+
+
 
   const updateData = () => {
     Promise.all([
       fetch("http://localhost:8088/requests")
       .then(res => res.json())
       .then((data) => {
-          updateRequest(data)
+        const filterData = data.filter((requests) => {
+          return requests.senderId === loggedInUser
+     },           
+     )
+          updateRequest(filterData)
       })
     ]);
   }; 
