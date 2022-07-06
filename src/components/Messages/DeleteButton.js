@@ -1,8 +1,15 @@
 import React from 'react'
 
 const DeleteButton = () => {
-  return (
+    const [message, setMessage] = useState()
+ 
+    const deleteTask = (id) => {
+        setTasks(tasks.filter((task)=> task.id !== id))
+      }
+
+    return (
     <div>
+        
     <button
     className='delete-btn'
     >

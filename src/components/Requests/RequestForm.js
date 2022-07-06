@@ -32,8 +32,8 @@ useEffect(
         .then((res) => res.json())
         .then((data) => {
           updateUser(data);
-    }
-)}, [])
+          
+    })}, [])
 
     const history = useHistory()
 
@@ -51,11 +51,6 @@ useEffect(
         
         evt.preventDefault()
 
-        // if (!input) {
-        //     alert('Please add a task')
-        //     return
-        //   }
-
         const fetchOption = {
             method: "POST",
             headers: {
@@ -66,7 +61,7 @@ useEffect(
 
         return fetch("http://localhost:8088/requests", fetchOption)
             .then(() => {
-                console.log(newRequest)
+               
             })
     }
 
@@ -98,11 +93,12 @@ useEffect(
     
     }
 
-    const findMessageSender = users.find((user) => {
-        return user.id === loggedInUser;
-      });
+    //working on having logged in user's name auto filled in the name part of the form
+    // const findMessageSender = users.find((user) => {
+    //     return user.id === loggedInUser;
+    //   });
     
-    console.log(findMessageSender)
+    // console.log(findMessageSender)
     return (
         < div className='request-form-container'>
     <form className='requestForm'>
@@ -113,10 +109,10 @@ useEffect(
             <div className='form-group'>
                 <label htmlFor='name'>Name: </label>
                 <input 
-                    disabled
+                   
                     type="text"
                     className='form-control'
-                    placeholder={findMessageSender.name}
+                    placeholder='Name'
                     onChange={
                         (evt) => {
                             const copy = {...requests}

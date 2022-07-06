@@ -1,7 +1,15 @@
-import React, { useState } from 'react'
-const loggedInUser = parseInt(localStorage.getItem("manes_user")) 
+import React, { useEffect, useState } from 'react'
+// const loggedInUser =  
+
 
 const MessageForm = () => {
+//     const [loggedInUser, userUpdate] = useState()
+
+// useEffect( () => {
+//     userUpdate()
+// })
+
+const loggedInUser = parseInt(localStorage.getItem("manes_user"))
   const [message, change] = useState({
       senderId: loggedInUser,
       reciepentId: 1,
@@ -30,12 +38,16 @@ const MessageForm = () => {
             console.log(newMessage)
         })
   }
-  
+  const stylistView = () => {loggedInUser === 1 ? console.log("yes") : console.log("no")}
     return (
+        
     <div className='message-form-container'>
         <form className='message-form'>
         <h2>Send Direct Message</h2>
-        {/* <fieldset>
+        {/* 
+        working on stylist view having the option of which client to send to rather
+        than all default sending to the stylist
+        {(loggedInUser === 1) ?  <fieldset>
             <div className='form-group'>
                 <label htmlFor='name'>To: </label>
                 <select 
@@ -46,7 +58,8 @@ const MessageForm = () => {
                 <option>Mac</option>
                 </select>
                 </div>
-        </fieldset> */}
+        </fieldset> : "client logged in"}
+        */}
         <fieldset>
             <div className='form-group'>
                 <label htmlFor='direct-message'>Message: </label>

@@ -18,24 +18,19 @@ const Messages = () => {
       fetch("http://localhost:8088/messages")
         .then((res) => res.json())
         .then((data) => {
-          const filterData = data.filter((messages) => {
-              return messages.senderId === loggedInUser || messages.senderId === 1
+          //filters messages only that have been sent from the logged in user or from stylist. need to add stylist views all
+          // const filterData = data.filter((messages) => {
+          //     return messages.senderId === loggedInUser || messages.senderId === 1 || 
              
-          },           
-          )
-          updateMessages(filterData);
+          // },           
+          // )
+          updateMessages(data);
         }),
     ]);
   };
 
   useEffect(updateData, []);
 
-  // useEffect( 
-  //     () => {
-
-  //   },
-  //   []
-  // )
 
   const deleteMessage = (id) => {
     fetch(`http://localhost:8088/messages/${id}`, {
@@ -50,9 +45,11 @@ const Messages = () => {
       <MessageFormButton />
       <h1>Message Inbox</h1>
       {messages.map((messageObject) => {
+        //taking message object id and tranlating it to the name of the sender
         const findMessageSender = users.find((user) => {
           return user.id === messageObject.senderId;
         });
+
         return (
           <div className="message-inbox" key={`message--${messageObject.id}`}>
             <h3>From: {findMessageSender.name}</h3>

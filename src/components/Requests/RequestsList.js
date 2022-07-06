@@ -13,11 +13,12 @@ const RequestsList = () => {
       fetch("http://localhost:8088/requests")
       .then(res => res.json())
       .then((data) => {
-        const filterData = data.filter((requests) => {
-          return requests.senderId === loggedInUser
-     },           
-     )
-          updateRequest(filterData)
+        //working on filtering requests that only logged in person sent & stylist view being able to see all of them
+    //     const filterData = data.filter((requests) => {
+    //       return requests.senderId === loggedInUser
+    //  },           
+    //  )
+          updateRequest(data)
       })
     ]);
   }; 
