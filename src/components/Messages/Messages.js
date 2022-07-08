@@ -53,9 +53,11 @@ const Messages = () => {
 
         return (
           <div className="message-inbox" key={`message--${messageObject.id}`}>
-            <h3>From: {findMessageSender.name}</h3>
+            <h3>From:NAME</h3>
 
-        
+          <button><Link to={`messages/${messageObject.id}`}>Edit</Link>
+            
+          </button>
             
             <button
               onClick={() => {

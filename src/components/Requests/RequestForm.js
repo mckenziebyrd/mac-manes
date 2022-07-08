@@ -20,7 +20,7 @@ const RequestForm = () => {
         hairHistory: "",
         img: "",
         appointmentDateTime: new Date('2014-09-18T21:11:54'),
-        senderId: ""
+        usersId: ""
     })
 const [image, setImage] = useState('')
 const [loading, setloading] = useState(false)
@@ -46,7 +46,7 @@ useEffect(
             hairHistory: requests.hairHistory,
             img: image,
            appointmentDateTime: requests.appointmentDateTime.toString(),
-            senderId: loggedInUser
+            usersId: loggedInUser
         }
         
         evt.preventDefault()

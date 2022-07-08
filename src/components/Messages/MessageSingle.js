@@ -7,7 +7,7 @@ export const MessageSingle = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/messages/${messageId}`)
+            fetch(`http://localhost:8088/messages/${messageId}?_expand=users`)
                 .then(res => res.json())
                 .then(set)
         },
@@ -17,8 +17,8 @@ export const MessageSingle = () => {
     return (
         <>
             <section className="message">
-                <h3 className="message--sender">from</h3>
-                <div className="message--message">message</div>
+                <h3 className="message--sender">from {message.users?.name}</h3>
+                <div className="message--message">{message.message}</div>
             </section>
         </>
     )
