@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DeleteButton from "./DeleteButton";
 import MessageFormButton from "./MessageFormButton";
+import { Link } from "react-router-dom";
 
 const Messages = () => {
   const [messages, updateMessages] = useState([]);
@@ -54,6 +55,8 @@ const Messages = () => {
           <div className="message-inbox" key={`message--${messageObject.id}`}>
             <h3>From: {findMessageSender.name}</h3>
 
+        
+            
             <button
               onClick={() => {
                 deleteMessage(messageObject.id);

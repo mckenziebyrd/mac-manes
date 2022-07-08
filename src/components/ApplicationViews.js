@@ -25,6 +25,9 @@ const ApplicationViews = () => {
         <Route path="/messages">
             <Messages />
         </Route>
+        <Route exact path="/messages/:messageId(\d+)">
+            <Messages />
+        </Route>
         <Route exact path="/messages-form">
             <MessageForm />
         </Route>
