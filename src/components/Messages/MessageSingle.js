@@ -16,10 +16,10 @@ export const MessageSingle = () => {
 
     return (
         <>
-            <section className="message">
+            <div className="message-inbox">
                 <h3 className="message--sender">from {message.users?.name}</h3>
-                <div className="message--message">{message.message}</div>
-            </section>
+                <p className="inbox-message">{message.message}</p>
+            </div>
         </>
     )
 }

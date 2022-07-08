@@ -16,7 +16,7 @@ const Messages = () => {
         .then((data) => {
           updateUser(data);
         }),
-      fetch("http://localhost:8088/messages")
+      fetch(`http://localhost:8088/messages?_expand=users`)
         .then((res) => res.json())
         .then((data) => {
           //filters messages only that have been sent from the logged in user or from stylist. need to add stylist views all
@@ -53,7 +53,7 @@ const Messages = () => {
 
         return (
           <div className="message-inbox" key={`message--${messageObject.id}`}>
-            <h3>From:NAME</h3>
+            <h3>From: {messageObject.users?.name}</h3>
 
           <button><Link to={`messages/${messageObject.id}`}>Edit</Link>
             
