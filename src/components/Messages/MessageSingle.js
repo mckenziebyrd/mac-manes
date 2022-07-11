@@ -43,23 +43,24 @@ export const MessageSingle = () => {
 
     return (
         <>
-            <div className="message-inbox">
+            <div className="message-inbox-edit">
                <form>
                 <h3 className="message--sender">From {message.users?.name}</h3>
-                <textarea
+                <input
                 type="text"
                 key={`message--${message.id}`}
-                className="inbox-message"
+                className="inbox-message-single"
                 defaultValue={message.message}
                 
                 >
-                </textarea>
+                </input>
            <button
+           className="btn"
            onChange={updateMessage}
            >Edit</button>
             </form>
             
-            </div>s
+            </div>
         </>
     )
 }
