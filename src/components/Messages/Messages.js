@@ -53,7 +53,7 @@ const Messages = () => {
 
         return (
           <div className="message-inbox" key={`message--${messageObject.id}`}>
-            <h3>From: {findMessageSender.name}</h3>
+            {/* <h3>From: {findMessageSender.name}</h3> */}
 
         
             
