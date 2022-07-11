@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react'
-// const loggedInUser =  
-
-
 const MessageForm = () => {
-//     const [loggedInUser, userUpdate] = useState()
 
-// useEffect( () => {
-//     userUpdate()
-// })
-
+const [users, updateUser] = useState([])
 const loggedInUser = parseInt(localStorage.getItem("manes_user"))
   const [message, change] = useState({
       usersId: loggedInUser,
@@ -38,35 +31,54 @@ const loggedInUser = parseInt(localStorage.getItem("manes_user"))
             console.log(newMessage)
         })
   }
-  const stylistView = () => {loggedInUser === 1 ? console.log("yes") : console.log("no")}
+ // const stylistView = () => {loggedInUser === 1 ? console.log("yes") : console.log("no")}
+
+  useEffect(
+    () => {
+        fetch("http://localhost:8088/users")
+        .then((res) => res.json())
+        .then((data) => {
+          updateUser(data);
+          
+    })}, [])
+
     return (
         
     <div className='message-form-container'>
         <form className='message-form'>
         <h2>Send Direct Message</h2>
-        {/* 
-        working on stylist view having the option of which client to send to rather
-        than all default sending to the stylist
+        
+       {/* working on stylist view having the option of which client to send to rather than all default sending to the stylist */}
         {(loggedInUser === 1) ?  <fieldset>
             <div className='form-group'>
                 <label htmlFor='name'>To: </label>
                 <select 
                     type="text"
                     className='form-control'
-                    placeholder='Name'   
+                    placeholder='Client'   
+                    onChange={
+                    //    sending reciepentId as a string and not integer
+                        (evt) => {
+                            const copy = {...message}
+                            copy.reciepentId = evt.target.value
+                            change(copy)
+                        }
+                    }
                     >
-                <option>Mac</option>
+                          {
+                            users.map(e => <option key={`users--${e.id}`} value={e.id}>{e.name}</option>)
+                        }
                 </select>
                 </div>
-        </fieldset> : "client logged in"}
-        */}
+        </fieldset> : ""}
+       
         <fieldset>
             <div className='form-group'>
                 <label htmlFor='direct-message'>Message: </label>
                 <textarea 
                     type="text"
                     className='form-message'
-                    placeholder='Message to Stylist'
+                    placeholder={(loggedInUser === 1) ? 'Message to Client' : 'Message to Stylist'}
                     onChange={
                         (evt) => {
                             const copy = {...message}
