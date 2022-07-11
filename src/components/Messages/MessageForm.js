@@ -11,7 +11,7 @@ const MessageForm = () => {
 
 const loggedInUser = parseInt(localStorage.getItem("manes_user"))
   const [message, change] = useState({
-      senderId: loggedInUser,
+      usersId: loggedInUser,
       reciepentId: 1,
       message: "",
       timestamp: Date.now().toString() 
@@ -19,7 +19,7 @@ const loggedInUser = parseInt(localStorage.getItem("manes_user"))
   
   const sendMessage = (evt) => {
       const newMessage = {
-          senderId: message.senderId,
+          usersId: message.usersId,
           reciepentId: message.reciepentId,
           message: message.message,
           timestamp: message.timestamp

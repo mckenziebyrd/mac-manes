@@ -43,3 +43,28 @@
     border-radius: 0.2rem;
     background-color: rgb(249, 234, 227);
 }
+
+.btn-secondary {
+    display: inline-block;
+    background: rgb(230, 201, 201);
+    color: #fff;
+    border: none;
+    padding: 5px 2px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.btn-secondary:hover {
+    padding: 6px 3px;
+    transition: all 0.3s ease-out;
+    background-color: wheat;
+    color: purple;
+    transition: 250ms;
+}
+
+.edit-link {
+    text-decoration: none;
+}

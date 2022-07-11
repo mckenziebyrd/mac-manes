@@ -8,6 +8,38 @@ const Messages = () => {
   const [users, updateUser] = useState([]);
   const loggedInUser = parseInt(localStorage.getItem("manes_user")) 
 
+//   useEffect(
+//     () => {
+//         fetch(`http://localhost:8088/messages?_expand=users`)
+//             .then(res => res.json())
+//             .then((data) => {
+              
+//                 updateMessages(data)
+//             })
+//     },
+//     []
+// )
+
+  // const updateData = () => {
+  //   Promise.all([
+  //     fetch("http://localhost:8088/users")
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         updateUser(data);
+  //       }),
+  //     fetch("http://localhost:8088/messages")
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         //filters messages only that have been sent from the logged in user or from stylist. need to add stylist views all
+  //         // const filterData = data.filter((messages) => {
+  //         //     return messages.senderId === loggedInUser || messages.senderId === 1 || 
+             
+  //         // },           
+  //         // )
+  //         updateMessages(data);
+  //       }),
+  //   ]);
+  // };
 
   const updateData = () => {
     Promise.all([
@@ -16,14 +48,13 @@ const Messages = () => {
         .then((data) => {
           updateUser(data);
         }),
-      fetch("http://localhost:8088/messages")
+      fetch(`http://localhost:8088/messages?_expand=users`)
         .then((res) => res.json())
         .then((data) => {
           //filters messages only that have been sent from the logged in user or from stylist. need to add stylist views all
           // const filterData = data.filter((messages) => {
-          //     return messages.senderId === loggedInUser || messages.senderId === 1 || 
-             
-          // },           
+          //     return messages.senderId === loggedInUser || messages.senderId === 1 ||   
+          // }
           // )
           updateMessages(data);
         }),
@@ -37,7 +68,7 @@ const Messages = () => {
     fetch(`http://localhost:8088/messages/${id}`, {
       method: "DELETE",
     }).then((data) => {
-      updateData();
+      updateMessages();
     });
   };
 
@@ -46,18 +77,18 @@ const Messages = () => {
       <MessageFormButton />
       <h1>Message Inbox</h1>
       {messages.map((messageObject) => {
-        //taking message object id and tranlating it to the name of the sender
-        const findMessageSender = users.find((user) => {
-          return user.id === messageObject.senderId;
-        });
-
+       
         return (
           <div className="message-inbox" key={`message--${messageObject.id}`}>
-            {/* <h3>From: {findMessageSender.name}</h3> */}
+            <h3>From: {messageObject.users.name}</h3>
 
-        
+          <button
+           className="btn-secondary"><Link className="edit-link" to={`messages/${messageObject.id}`}>Edit</Link>
+            
+          </button>
             
             <button
+             className="btn-secondary"
               onClick={() => {
                 deleteMessage(messageObject.id);
               }}
