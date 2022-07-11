@@ -20,27 +20,6 @@ const Messages = () => {
 //     []
 // )
 
-  // const updateData = () => {
-  //   Promise.all([
-  //     fetch("http://localhost:8088/users")
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         updateUser(data);
-  //       }),
-  //     fetch("http://localhost:8088/messages")
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         //filters messages only that have been sent from the logged in user or from stylist. need to add stylist views all
-  //         // const filterData = data.filter((messages) => {
-  //         //     return messages.senderId === loggedInUser || messages.senderId === 1 || 
-             
-  //         // },           
-  //         // )
-  //         updateMessages(data);
-  //       }),
-  //   ]);
-  // };
-
   const updateData = () => {
     Promise.all([
       fetch("http://localhost:8088/users")
@@ -52,11 +31,16 @@ const Messages = () => {
         .then((res) => res.json())
         .then((data) => {
           //filters messages only that have been sent from the logged in user or from stylist. need to add stylist views all
-          // const filterData = data.filter((messages) => {
-          //     return messages.senderId === loggedInUser || messages.senderId === 1 ||   
-          // }
-          // )
-          updateMessages(data);
+          const filterData = data.filter((messages) => {
+            
+            
+      
+              return messages.usersId === loggedInUser 
+              // need to find a way to show all messages if stylist is logged in 
+              // || messages.reciepentId === 1  
+          }
+          )
+          updateMessages(filterData);
         }),
     ]);
   };
@@ -71,6 +55,9 @@ const Messages = () => {
       updateMessages();
     });
   };
+
+
+ 
 
   return (
     <div>
